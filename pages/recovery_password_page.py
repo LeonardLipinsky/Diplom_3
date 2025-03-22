@@ -7,44 +7,44 @@ import allure
 class RecoveryPasswordPage(BasePage):
     @allure.step('Открыть страницу восстановления пароля')
     def open_recovery_password_page(self):
-        self.wait_visibility_element(LocatorsRecovery.forgot_password_button)
-        self.click_element(LocatorsRecovery.forgot_password_button)
+        self.wait_visibility_element(LocatorsRecovery.FORGOT_PASSWORD_BUTTON)
+        self.click_element(LocatorsRecovery.FORGOT_PASSWORD_BUTTON)
 
     @allure.step('Проверить отображение поля Email')
     def check_display_email_input(self):
-        return self.check_display_element(LocatorsRecovery.email_input)
+        return self.check_display_element(LocatorsRecovery.EMAIL_INPUT)
 
     @allure.step('Проверить отображение поля Пароль')
     def check_display_password_input(self):
-        self.wait_visibility_element(LocatorsRecovery.password_input)
-        return self.check_display_element(LocatorsRecovery.password_input)
+        self.wait_visibility_element(LocatorsRecovery.PASSWORD_INPUT)
+        return self.check_display_element(LocatorsRecovery.PASSWORD_INPUT)
 
     @allure.step('Ввести email')
     def send_keys_email(self):
-        self.wait_visibility_element(LocatorsRecovery.email_input)
+        self.wait_visibility_element(LocatorsRecovery.EMAIL_INPUT)
         email = create_random_email()
-        self.send_keys_to_input(LocatorsRecovery.email_input, email)
+        self.send_keys_to_input(LocatorsRecovery.EMAIL_INPUT, email)
 
     @allure.step('Ввести пароль')
     def send_keys_password(self):
-        self.wait_visibility_element(LocatorsRecovery.password_input)
+        self.wait_visibility_element(LocatorsRecovery.PASSWORD_INPUT)
         passwd = create_random_password()
-        self.send_keys_to_input(LocatorsRecovery.password_input, passwd)
+        self.send_keys_to_input(LocatorsRecovery.PASSWORD_INPUT, passwd)
 
     @allure.step('Клик по кнопке Восстановить')
     def click_recovery_password_button(self):
-        self.wait_visibility_element(LocatorsRecovery.recovery_button)
-        self.click_element(LocatorsRecovery.recovery_button)
+        self.wait_visibility_element(LocatorsRecovery.RECOVERY_BUTTON)
+        self.click_element(LocatorsRecovery.RECOVERY_BUTTON)
 
     @allure.step('Клик по иконке глаза')
     def click_eye_icon(self):
-        self.wait_visibility_element(LocatorsRecovery.eye_icon)
-        self.click_element(LocatorsRecovery.eye_icon)
+        self.wait_visibility_element(LocatorsRecovery.EYE_ICON)
+        self.click_element(LocatorsRecovery.EYE_ICON)
 
     @allure.step('Проверить, что поле Пароль видимо')
     def check_display_password_visible(self):
-        return self.check_display_element(LocatorsRecovery.password_visible)
+        return self.check_display_element(LocatorsRecovery.PASSWORD_VISIBLE)
 
     @allure.step('Проверить, что поле Пароль невидимо')
     def check_display_password_invisible(self):
-        return self.check_display_element(LocatorsRecovery.password_invisible)
+        return self.check_display_element(LocatorsRecovery.PASSWORD_INVISIBLE)

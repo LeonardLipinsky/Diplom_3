@@ -7,12 +7,12 @@ class OrderHistoryPage(BasePage):
 
     @allure.step('Ожидание карточки заказа')
     def wait_order_visibility(self):
-        self.wait_visibility_element(LocatorsOrderHistory.order_card)
+        self.wait_visibility_element(LocatorsOrderHistory.ORDER_CARD)
 
     @allure.step('Получить текст заказа')
     def get_text_order_card_header(self):
-        return self.get_element_text(LocatorsOrderHistory.order_title)
+        return self.get_element_text(LocatorsOrderHistory.ORDER_TITLE)
 
     @allure.step('Получить номер заказа в карточке')
     def get_id_order_card(self):
-        return self.get_element_text(LocatorsOrderHistory.order_card)
+        return self.get_element_text(LocatorsOrderHistory.ORDER_ID)

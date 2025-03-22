@@ -9,8 +9,8 @@ class BasePage:
         self.driver = driver
 
     @allure.step('Подождать прогрузки элемента')
-    def wait_visibility_element(self, locator):
-        WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(locator))
+    def wait_visibility_element(self, locator, timeout=15):
+        WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
     @allure.step('Найти элемент')
     def find_element_with_wait(self, locator):
@@ -23,18 +23,16 @@ class BasePage:
 
     @allure.step('Получить текст элемента')
     def get_element_text(self, locator):
-        downloading = ActionChains(self.driver)
-        downloading.pause(10)
         self.wait_visibility_element(locator)
         return self.driver.find_element(*locator).text
 
     @allure.step('Подождать смену текста на элементе')
-    def wait_element_change_text(self, locator, value):
-        return WebDriverWait(self.driver, 15).until_not(EC.text_to_be_present_in_element(locator, value))
+    def wait_element_change_text(self, locator, value, timeout=15):
+        return WebDriverWait(self.driver, timeout).until_not(EC.text_to_be_present_in_element(locator, value))
 
     @allure.step('Проверить кликабельность')
-    def check_element_clickable(self, locator):
-        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(locator))
+    def check_element_clickable(self, locator, timeout=15):
+        return WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
     @allure.step('Клик на элемент')
     def click_element(self, locator):
@@ -57,5 +55,5 @@ class BasePage:
         self.driver.find_element(*locator).send_keys(keys)
 
     @allure.step('Подождать закрытия элемента')
-    def wait_close_element(self, locator):
-        WebDriverWait(self.driver, 15).until_not(EC.visibility_of_element_located(locator))
+    def wait_close_element(self, locator, timeout=15):
+        WebDriverWait(self.driver, timeout).until_not(EC.visibility_of_element_located(locator))

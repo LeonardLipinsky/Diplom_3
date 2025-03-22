@@ -27,7 +27,7 @@ class TestFeed:
         account_page.click_order_history_button()
         order_id = order_history_page.get_id_order_card()
         main_page.click_header_feed_button()
-        assert feed_page.get_text_title_order_list(order_id)
+        assert feed_page.check_id_order_feed(order_id)
 
     @allure.title('Проверка увеличения числа на счетчике общего количества выполненных заказов')
     def test_changes_counter_for_quantity_of_orders_success(self, driver, set_user_tokens):
